@@ -1,0 +1,22 @@
+{
+  "selection": "first N in numeric filename order; no metric-based selection",
+  "counts": {
+    "工地一": 100,
+    "工地二": 400
+  },
+  "interval_rows": 4173,
+  "rgb_pixel_equality_verified": true,
+  "annotations_sha256": "18d909a43e9d664e5375a487151602aac53d76f7fedc81d8567f28197494b2f0",
+  "split_counts": {
+    "工地一": {
+      "train": 73,
+      "val": 17,
+      "unassigned": 10
+    },
+    "工地二": {
+      "train": 317,
+      "val": 79,
+      "unassigned": 4
+    }
+  }
+}

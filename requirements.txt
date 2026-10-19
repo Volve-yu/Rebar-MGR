@@ -1,0 +1,7 @@
+torch>=2.0.0
+torchvision>=0.15.0
+Pillow>=9.0.0
+numpy>=1.23.0
+scipy>=1.9.0
+matplotlib>=3.5.0
+requests>=2.28.0

@@ -1,0 +1,125 @@
+-#- -M-O-D-I-F-I-C-A-T-I-O-N-S-.-m-d- ---M-o-b-i-l-e---S-e-e-d-
+-
+-#-#- -O-f-f-i-c-i-a-l- -s-o-u-r-c-e-
+-
+-|- -F-i-e-l-d- -|- -V-a-l-u-e- -|-
+-|---------------|---------------|-
+-|- -P-a-p-e-r- -|- -"-M-o-b-i-l-e---S-e-e-d-:- -J-o-i-n-t- -S-e-m-a-n-t-i-c- -S-e-g-m-e-n-t-a-t-i-o-n- -a-n-d- -B-o-u-n-d-a-r-y- -D-e-t-e-c-t-i-o-n- -f-o-r- -M-o-b-i-l-e- -R-o-b-o-t-i-c-s-"- -|-
+-|- -V-e-n-u-e- -|- -I-E-E-E- -R-o-b-o-t-i-c-s- -a-n-d- -A-u-t-o-m-a-t-i-o-n- -L-e-t-t-e-r-s- -(-R-A-L-)-,- -2-0-2-4- -|-
+-|- -A-u-t-h-o-r-s- -|- -Y-o-u-q-i- -L-i-a-o- -e-t- -a-l-.- -(-W-u-h-a-n- -U-n-i-v-e-r-s-i-t-y-)- -|-
+-|- -G-i-t-H-u-b- -U-R-L- -|- -h-t-t-p-s-:-/-/-g-i-t-h-u-b-.-c-o-m-/-W-H-U---U-S-I-3-D-V-/-M-o-b-i-l-e---S-e-e-d- -|-
+-|- -C-o-m-m-i-t- -|- -e-9-a-f-3-6-e-a-9-a-c-9-d-a-c-5-5-0-6-8-8-0-0-9-6-c-d-3-8-4-2-3-d-c-3-d-b-f-5-1- -|-
+-|- -C-l-o-n-e- -d-a-t-e- -|- -2-0-2-6---0-5---0-2- -|-
+-|- -F-r-e-s-h-l-y- -c-l-o-n-e-d- -|- -Y-e-s- ---c-l-o-n-e-d- -d-i-r-e-c-t-l-y- -f-r-o-m- -G-i-t-H-u-b- -i-n-t-o- -r-e-p-o-/- -o-n- -2-0-2-6---0-5---0-2- -|-
+-|- -L-i-c-e-n-s-e- -|- -N-o-t- -s-p-e-c-i-f-i-e-d- -i-n- -r-e-p-o- -(-c-o-n-t-a-c-t- -a-u-t-h-o-r-s-)- -|-
+-
+-#-#- -R-e-p-o- -s-t-a-t-u-s-
+-
+-T-h-e- -f-r-e-s-h- -c-l-o-n-e- -a-t- -`-r-e-p-o-/-`- -i-s- -c-l-e-a-n-.- -T-h-e- -o-r-i-g-i-n-a-l- -f-r-a-m-e-w-o-r-k- -i-s- -M-M-S-e-g---b-a-s-e-d- -(-m-m-s-e-g- -+-
+-m-m-c-v- -d-e-p-e-n-d-e-n-c-i-e-s-)-.- -N-o- -f-i-l-e-s- -w-e-r-e- -m-o-d-i-f-i-e-d- -p-r-i-o-r- -t-o- -S-t-a-g-e- -D-.-
+-
+-#-#- -O-f-f-i-c-i-a-l- -f-i-l-e-s- -i-m-p-o-r-t-e-d- -o-r- -w-r-a-p-p-e-d-
+-
+-|- -F-i-l-e- -|- -C-l-a-s-s-e-s-/-f-u-n-c-t-i-o-n-s- -u-s-e-d- -|- -P-u-r-p-o-s-e- -|-
+-|-------------|---------------------------------------------|-------------------|-
+-|- -`-r-e-p-o-/-m-m-s-e-g-/-m-o-d-e-l-s-/-d-e-c-o-d-e-_-h-e-a-d-s-/-M-S-_-h-e-a-d-.-p-y-`- -|- -`-C-h-a-n-n-e-l-A-t-t-`-,- -`-A-F-D-`- -|- -O-f-f-i-c-i-a-l- -c-o-u-p-l-i-n-g- -m-o-d-u-l-e-:- -c-r-o-s-s---a-t-t-e-n-t-i-o-n- -f-u-s-i-o-n- -b-e-t-w-e-e-n- -s-e-g- -a-n-d- -b-o-u-n-d-a-r-y- -f-e-a-t-u-r-e-s- -|-
+-
+-#-#-#- -K-e-y- -o-f-f-i-c-i-a-l- -c-l-a-s-s-e-s-
+-
+-`-C-h-a-n-n-e-l-A-t-t-`- -(-l-i-n-e-s- -2-2---3- -o-f- -M-S-_-h-e-a-d-.-p-y-)-:-
+--- -G-l-o-b-a-l- -a-v-e-r-a-g-e- -p-o-o-l- --->-1-x-1- -c-o-n-v- -(-v-i-a- -`-C-o-n-v-M-o-d-u-l-e-`-)- --->-c-h-a-n-n-e-l- -a-t-t-e-n-t-i-o-n- -w-e-i-g-h-t-s-
+--- -R-e-t-u-r-n-s- -`-(-x-,- -a-t-t-e-n-)-`- -w-h-e-r-e- -`-a-t-t-e-n-`- -i-s- -t-h-e- -c-h-a-n-n-e-l---w-i-s-e- -a-t-t-e-n-t-i-o-n- -m-a-p-
+-
+-`-A-F-D-`- ---A-c-t-i-v-e- -F-u-s-i-o-n- -D-e-c-o-d-e-r- -(-l-i-n-e-s- -3-5---7- -o-f- -M-S-_-h-e-a-d-.-p-y-)-:-
+--- -C-o-n-c-a-t-e-n-a-t-e-s- -`-s-_-a-t-t-`- -a-n-d- -`-c-_-a-t-t-`- -f-r-o-m- -t-h-e- -t-w-o- -b-r-a-n-c-h-e-s- --->-`-[-B-,- -2-C-]-`- -v-e-c-t-o-r-
+--- -L-i-n-e-a-r- -Q-K-V- -p-r-o-j-e-c-t-i-o-n- --->-m-u-l-t-i---h-e-a-d- -c-h-a-n-n-e-l---w-i-s-e- -a-t-t-e-n-t-i-o-n- -(-e-i-n-s-u-m-)-
+--- -P-r-o-d-u-c-e-s- -`-f-u-s-e-_-s-`- -a-n-d- -`-f-u-s-e-_-c-`- -w-e-i-g-h-t-s- --->-`-o-u-t- -=- -(-1- -+- -f-u-s-e-_-s-)- -*- -s-_-f-e-a-t- -+- -(-1- -+- -f-u-s-e-_-c-)- -*- -c-_-f-e-a-t-`-
+--- -T-h-i-s- -i-s- -t-h-e- -o-f-f-i-c-i-a-l- -c-o-u-p-l-i-n-g- -c-o-n-t-r-i-b-u-t-i-o-n- -o-f- -M-o-b-i-l-e---S-e-e-d-
+-
+-`-B-o-u-n-d-a-r-y-H-e-a-d-`- -a-n-d- -`-R-e-f-i-n-e-H-e-a-d-`- -(-a-l-s-o- -i-n- -M-S-_-h-e-a-d-.-p-y-)- -a-r-e- -N-O-T- -u-s-e-d-:- -t-h-e-y- -d-e-p-e-n-d- -o-n-
+-M-M-S-e-g- -b-a-s-e- -c-l-a-s-s-e-s- -(-`-B-a-s-e-D-e-c-o-d-e-H-e-a-d-`-)- -a-n-d- -a-r-e- -s-p-e-c-i-f-i-c- -t-o- -t-h-e- -m-u-l-t-i---c-l-a-s-s- -c-i-t-y-s-c-a-p-e-s-
+-s-e-t-u-p-.-
+-
+-#-#- -D-i-s-c-r-e-p-a-n-c-y- -w-i-t-h- -e-x-i-s-t-i-n-g- -b-a-s-e-l-i-n-e-s-/-m-o-d-e-l-s-/-m-o-b-i-l-e-_-s-e-e-d-.-p-y-
+-
+-T-h-e- -e-x-i-s-t-i-n-g- -`-b-a-s-e-l-i-n-e-s-/-m-o-d-e-l-s-/-m-o-b-i-l-e-_-s-e-e-d-.-p-y-`- -i-m-p-l-e-m-e-n-t-s- -a-n- -`-A-D-T-I-`- -m-o-d-u-l-e- -(-S-E---s-t-y-l-e-
+-c-h-a-n-n-e-l- -a-t-t-e-n-t-i-o-n-,- -2---l-a-y-e-r- -l-i-n-e-a-r- -w-i-t-h- -s-i-g-m-o-i-d-)-.- -T-h-i-s- -i-s- -a-r-c-h-i-t-e-c-t-u-r-a-l-l-y- -d-i-f-f-e-r-e-n-t- -f-r-o-m-
+-t-h-e- -o-f-f-i-c-i-a-l- -`-A-F-D-`- -(-t-r-a-n-s-f-o-r-m-e-r---s-t-y-l-e- -c-r-o-s-s---a-t-t-e-n-t-i-o-n- -w-i-t-h- -Q-K-V- -e-i-n-s-u-m-)-.- -`-b-a-s-e-l-i-n-e-s-_-c-l-e-a-n-`-
+-u-s-e-s- -t-h-e- -c-o-r-r-e-c-t- -o-f-f-i-c-i-a-l- -`-A-F-D-`- -m-o-d-u-l-e- -f-r-o-m- -t-h-e- -f-r-e-s-h- -c-l-o-n-e-.-
+-
+-#-#- -A-d-a-p-t-a-t-i-o-n-s- -i-n- -r-e-b-a-r-_-a-d-a-p-t-/-
+-
+-|- -F-i-l-e- -|- -D-e-s-c-r-i-p-t-i-o-n- -|-
+-|-------------|---------------------------|-
+-|- -`-r-e-b-a-r-_-a-d-a-p-t-/-_-_-i-n-i-t-_-_-.-p-y-`- -|- -P-a-c-k-a-g-e- -p-l-a-c-e-h-o-l-d-e-r- -|-
+-|- -`-r-e-b-a-r-_-a-d-a-p-t-/-m-o-b-i-l-e-_-s-e-e-d-_-r-e-b-a-r-.-p-y-`- -|- -`-M-o-b-i-l-e-S-e-e-d-R-e-b-a-r-`- -m-o-d-e-l- -c-l-a-s-s- -(-S-t-a-g-e- -D-)- -|-
+-
+-#-#-#- -W-h-a-t- -r-e-b-a-r-_-a-d-a-p-t-/-m-o-b-i-l-e-_-s-e-e-d-_-r-e-b-a-r-.-p-y- -w-i-l-l- -d-o-
+-
+-E-x-t-r-a-c-t-s- -`-C-h-a-n-n-e-l-A-t-t-`- -a-n-d- -`-A-F-D-`- -l-o-g-i-c- -f-r-o-m- -`-r-e-p-o-/-m-m-s-e-g-/-m-o-d-e-l-s-/-d-e-c-o-d-e-_-h-e-a-d-s-/-M-S-_-h-e-a-d-.-p-y-`-.-
+-D-o-e-s- -N-O-T- -i-m-p-o-r-t- -f-r-o-m- -`-r-e-p-o-/-`- -a-t- -r-u-n-t-i-m-e- -(-m-m-c-v- -i-s- -a- -h-e-a-v-y- -o-p-t-i-o-n-a-l- -d-e-p-e-n-d-e-n-c-y-)-.- -I-n-s-t-e-a-d-,-
+-`-C-h-a-n-n-e-l-A-t-t-`- -a-n-d- -`-A-F-D-`- -a-r-e- -r-e-i-m-p-l-e-m-e-n-t-e-d- -i-n-l-i-n-e-,- -r-e-p-l-a-c-i-n-g- -o-n-l-y- -t-h-e- -`-C-o-n-v-M-o-d-u-l-e-`- -c-a-l-l-s-
+-w-i-t-h- -`-n-n-.-S-e-q-u-e-n-t-i-a-l-(-C-o-n-v-2-d-,- -B-N-,- -R-e-L-U-)-`- ---n-o- -o-t-h-e-r- -l-o-g-i-c- -c-h-a-n-g-e-s-.-
+-
+-|- -C-h-a-n-g-e- -|- -R-e-a-s-o-n- -|-
+-|-----------------|-----------------|-
+-|- -B-a-c-k-b-o-n-e-:- -A-F-F-o-r-m-e-r- --->-M-o-b-i-l-e-N-e-t-V-3---L-a-r-g-e- -|- -F-a-i-r- -e-n-c-o-d-e-r- -c-o-m-p-a-r-i-s-o-n- -|-
+-|- -`-C-o-n-v-M-o-d-u-l-e-`- -(-m-m-c-v-)- --->-`-n-n-.-S-e-q-u-e-n-t-i-a-l-(-C-o-n-v-2-d-,- -B-N-,- -R-e-L-U-)-`- -|- -R-e-m-o-v-e- -m-m-c-v- -d-e-p-e-n-d-e-n-c-y-;- -f-u-n-c-t-i-o-n-a-l-l-y- -e-q-u-i-v-a-l-e-n-t- -|-
+-|- -M-M-S-e-g- -`-B-a-s-e-D-e-c-o-d-e-H-e-a-d-`-,- -`-r-e-g-i-s-t-e-r-_-m-o-d-u-l-e-`-,- -e-t-c-.-:- -r-e-m-o-v-e-d- -|- -F-r-a-m-e-w-o-r-k---s-p-e-c-i-f-i-c- -s-c-a-f-f-o-l-d-i-n-g-;- -n-o-t- -t-h-e- -c-o-u-p-l-i-n-g- -c-o-n-t-r-i-b-u-t-i-o-n- -|-
+-|- -`-A-F-D-`- -f-o-r-w-a-r-d- -l-o-g-i-c- -(-e-i-n-s-u-m-,- -Q-K-V-,- -f-u-s-e-_-s-/-f-u-s-e-_-c-)-:- -p-r-e-s-e-r-v-e-d- -e-x-a-c-t-l-y- -|- -C-o-r-e- -c-o-n-t-r-i-b-u-t-i-o-n- -o-f- -M-o-b-i-l-e---S-e-e-d- -|-
+-|- -`-C-h-a-n-n-e-l-A-t-t-`- -f-o-r-w-a-r-d- -l-o-g-i-c-:- -p-r-e-s-e-r-v-e-d- -e-x-a-c-t-l-y- -|- -U-s-e-d- -i-n-s-i-d-e- -A-F-D- -|-
+-|- -A-F-D- -a-p-p-l-i-e-d- -a-t- -a-l-l- -4- -F-P-N- -s-c-a-l-e-s- -|- -M-a-t-c-h-e-s- -o-r-i-g-i-n-a-l- -m-u-l-t-i---s-c-a-l-e- -c-o-u-p-l-i-n-g- -i-n-t-e-n-t- -|-
+-|- -B-i-n-a-r-y- -o-u-t-p-u-t- -(-1- -c-h-a-n-n-e-l- -e-a-c-h- -f-o-r- -s-e-g- -a-n-d- -e-d-g-e-)- -|- -B-i-n-a-r-y- -r-e-b-a-r- -t-a-s-k- -|-
+-
+-*-*-W-h-a-t- -i-s- -u-n-c-h-a-n-g-e-d-*-*-:- -t-h-e- -`-A-F-D-`- -c-r-o-s-s---a-t-t-e-n-t-i-o-n- -m-e-c-h-a-n-i-s-m- -(-Q-K-V- -e-i-n-s-u-m-,- -c-h-a-n-n-e-l---w-i-s-e-
+-s-o-f-t- -r-o-u-t-i-n-g-,- -a-d-d-i-t-i-v-e- -r-e-s-i-d-u-a-l- -f-u-s-i-o-n-)-.- -T-h-i-s- -i-s- -t-h-e- -d-e-f-i-n-i-n-g- -c-o-n-t-r-i-b-u-t-i-o-n- -o-f-
+-M-o-b-i-l-e---S-e-e-d- -a-n-d- -i-s- -u-s-e-d- -u-n-m-o-d-i-f-i-e-d- -i-n- -l-o-g-i-c-.-
+-
+-#-#- -T-a-b-l-e- -n-a-m-e- -i-n- -p-a-p-e-r-
+-
+-`-M-o-b-i-l-e---S-e-e-d- -(-a-d-a-p-t-e-d-)-`-
+-
+-#-#- -O-f-f-i-c-i-a-l- -r-e-p-o- -f-i-l-e-s- -m-o-d-i-f-i-e-d-
+-
+-*-*-N-o-n-e-.-*-*- -N-o- -f-i-l-e- -i-n-s-i-d-e- -`-r-e-p-o-/-`- -h-a-s- -b-e-e-n- -m-o-d-i-f-i-e-d-.- -C-o-n-f-i-r-m-e-d- -b-y- -`-g-i-t- ---C- -r-e-p-o- -s-t-a-t-u-s-
+-----s-h-o-r-t-`- -r-e-t-u-r-n-i-n-g- -e-m-p-t-y- -o-u-t-p-u-t-.-
+-
+-#-#- -T-r-a-i-n-i-n-g- -c-o-m-m-a-n-d-
+-
+-`-`-`-b-a-s-h-
+-p-y-t-h-o-n- -b-a-s-e-l-i-n-e-s-_-c-l-e-a-n-/-t-r-a-i-n-.-p-y- -----m-o-d-e- -m-o-b-i-l-e-_-s-e-e-d- -\-
+- - - - -----d-a-t-a-_-r-o-o-t- -d-a-t-a- -----s-u-b-s-e-t-s- -a-l-l---1- -a-l-l---2- -----s-p-l-i-t- -t-r-a-i-n- -\-
+- - - - -----i-m-g-_-h- -4-8-0- -----i-m-g-_-w- -6-4-0- -\-
+- - - - -----s-a-v-e-_-d-i-r- -c-h-e-c-k-p-o-i-n-t-s-_-c-l-e-a-n-/-m-o-b-i-l-e-_-s-e-e-d-
+-`-`-`-
+-
+-#-#- -I-n-f-e-r-e-n-c-e- -c-o-m-m-a-n-d-
+-
+-`-`-`-b-a-s-h-
+-p-y-t-h-o-n- -b-a-s-e-l-i-n-e-s-_-c-l-e-a-n-/-p-r-e-d-i-c-t-.-p-y- -----m-o-d-e- -m-o-b-i-l-e-_-s-e-e-d- -\-
+- - - - -----c-h-e-c-k-p-o-i-n-t- -c-h-e-c-k-p-o-i-n-t-s-_-c-l-e-a-n-/-m-o-b-i-l-e-_-s-e-e-d-/-b-e-s-t-.-p-t-h- -\-
+- - - - -----d-a-t-a-_-r-o-o-t- -d-a-t-a- -----s-u-b-s-e-t-s- -a-l-l---1- -a-l-l---2- -----s-p-l-i-t- -v-a-l- -\-
+- - - - -----o-u-t-_-d-i-r- -p-r-e-d-i-c-t-i-o-n-s-/-m-o-b-i-l-e-_-s-e-e-d-
+-`-`-`-
+-
+-#-#- -O-u-t-p-u-t- -d-i-r-e-c-t-o-r-y-
+-
+-`-`-`-
+-p-r-e-d-i-c-t-i-o-n-s-/-m-o-b-i-l-e-_-s-e-e-d-/-{-s-u-b-s-e-t-}-/-s-e-g-/-{-i-d-}-.-p-n-g-
+-p-r-e-d-i-c-t-i-o-n-s-/-m-o-b-i-l-e-_-s-e-e-d-/-{-s-u-b-s-e-t-}-/-e-d-g-e-/-{-i-d-}-.-p-n-g-
+-`-`-`-
+-
+-#-#- -C-u-r-r-e-n-t- -s-t-a-t-u-s-
+-
+--- -[-x-]- -R-e-p-o- -f-r-e-s-h-l-y- -c-l-o-n-e-d-
+--- -[-x-]- -M-O-D-I-F-I-C-A-T-I-O-N-S-.-m-d- -w-r-i-t-t-e-n-
+--- -[- -]- -r-e-b-a-r-_-a-d-a-p-t-/-m-o-b-i-l-e-_-s-e-e-d-_-r-e-b-a-r-.-p-y- -i-m-p-l-e-m-e-n-t-e-d- -(-S-t-a-g-e- -D-)-
+--- -[- -]- -S-m-o-k-e- -t-e-s-t- -p-a-s-s-e-d-
+--- -[- -]- -T-r-a-i-n-i-n-g- -r-u-n- -s-t-a-r-t-e-d-
+-
+-#-#- -P-e-n-d-i-n-g- -i-t-e-m-s-
+-
+--- -I-m-p-l-e-m-e-n-t- -`-M-o-b-i-l-e-S-e-e-d-R-e-b-a-r-`- -i-n- -`-r-e-b-a-r-_-a-d-a-p-t-/-m-o-b-i-l-e-_-s-e-e-d-_-r-e-b-a-r-.-p-y-`- -(-S-t-a-g-e- -D-)-
+--- -R-u-n- -s-m-o-k-e- -t-e-s-t-:- -d-u-m-m-y- -i-n-p-u-t- -[-1-,- -3-,- -4-8-0-,- -6-4-0-]- --->-(-e-d-g-e-_-l-o-g-i-t- -[-1-,-1-,-4-8-0-,-6-4-0-]-,- -s-e-g-_-l-o-g-i-t- -[-1-,-1-,-4-8-0-,-6-4-0-]-)-
+--- -T-r-a-i-n- -o-n- -r-e-b-a-r- -d-a-t-a- -a-n-d- -e-x-p-o-r-t- -p-r-e-d-i-c-t-i-o-n-s-
+-

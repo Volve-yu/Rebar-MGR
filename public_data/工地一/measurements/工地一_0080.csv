@@ -1,0 +1,10 @@
+﻿sample_id,site,laser_distance_m,interval_id,left_bar,right_bar,left_x_px,right_x_px,region_id,submitted_spacing_mm,design_spacing_mm,lower_tolerance_mm,upper_tolerance_mm,design_basis,value_source,review_status
+工地一_0080,工地一,0.6,d1,1,2,109.0,268.0,C,141.33,120,-10,10,,user_reported_measurement,user_verified
+工地一_0080,工地一,0.6,d2,2,3,268.0,398.0,C,115.53,120,-10,10,,user_reported_measurement,user_verified
+工地一_0080,工地一,0.6,d3,3,4,398.0,517.0,C,105.90,120,-10,10,,user_reported_measurement,user_verified
+工地一_0080,工地一,0.6,d4,4,5,517.0,634.0,C,103.92,120,-10,10,,user_reported_measurement,user_verified
+工地一_0080,工地一,0.6,d5,5,6,634.0,780.0,C,130.18,120,-10,10,,user_reported_measurement,user_verified
+工地一_0080,工地一,0.6,d6,6,7,780.0,881.0,C,90.20,120,-10,10,,user_reported_measurement,user_verified
+工地一_0080,工地一,0.6,d7,7,8,881.0,1015.0,C,119.25,120,-10,10,,user_reported_measurement,user_verified
+工地一_0080,工地一,0.6,d8,8,9,1015.0,1119.0,C,92.50,120,-10,10,,user_reported_measurement,user_verified
+工地一_0080,工地一,0.6,d9,9,10,1119.0,1267.0,C,131.44,120,-10,10,,user_reported_measurement,user_verified
