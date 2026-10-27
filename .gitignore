@@ -2,6 +2,7 @@ __pycache__/
 # Generated training-layout copies of the public subset; publish public_data only.
 /data/
 /annotation_all_images/
+/song2026_detection_drafts/
 *.py[cod]
 .venv/
 env/

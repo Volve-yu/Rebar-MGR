@@ -20,6 +20,7 @@ The released acquisition protocol uses an RGB camera in RGB mode and an independ
 src/                    baseline segmentation, measurement, and evaluation code
 src_measure_guided/     EPM training, prediction, and measurement-guided losses
 src_report/             structured evidence and report-generation utilities
+measurement_song2026/   detector/Hough adaptation for 2D measurement comparison
 scripts/                experiment runners and screening evaluation
 baselines_clean/        unified external-baseline interface
 data/                   two-site RGB images and annotations
@@ -149,6 +150,19 @@ python scripts/run_revision_followups.py 4 --source-root runs/revision_full_seed
 ```
 
 The model alias is the one recorded in the revision experiment; availability depends on the service account. `python scripts/list_dashscope_models.py --help` describes model discovery. Do not silently substitute a different model for only some settings. Report scores measure preservation of supplied evidence, not independently verified physical accuracy.
+
+For a short final inspection summary, add `--report-style concise` to a direct
+`src_report/generate.py` command and use a new output file. This optional mode
+aims for four sentences, rejects outputs exceeding six sentences or 100 words,
+and retains rejected raw responses for inspection. The default `original` mode
+preserves the prompts used for the reported experiments. Figure summaries do
+not replace archived outputs or change their evaluation scores.
+
+## Additional measurement and report comparisons
+
+The added detector/Hough comparison is documented in `measurement_song2026/README.md`. `scripts/run_traditional_measurement.py` evaluates RGB-Canny-Hough, predicted-mask Hough, and the EPM projection routine under one physical-reference protocol. It requires Full-model train/validation predictions and the separately supplied physical-reference table; these full-data inputs are not included in this code update. The Hough settings are selected on the training split, not on validation data. For method comparisons on common recovered intervals, use `scripts/compare_traditional_common_intervals.py` with its `--help` options.
+
+The report comparison utilities `scripts/compare_template_with_groundtruth.py` and `scripts/rescore_reports_with_groundtruth.py` accept explicit paths to generated reports and reviewed reference reports. `scripts/rebuild_reviewed_groundtruth.py` provides the separate draft, review-sheet and export workflow when physical-reference inputs are available; it does not automatically mark a draft as reviewed. Their outputs are written to caller-selected directories; neither source data nor generated reports are committed. `src_report/generate.py` already supports the measurement-only and measurement-plus-rule input settings. The complete paper scores require the private full validation set and its reviewed references; the public subset is for inspecting the implementation and running smaller independent tests.
 
 ## External baselines
 

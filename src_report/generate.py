@@ -273,7 +273,7 @@ def _text_block(text: str) -> dict:
     return {"type": "text", "text": text}
 
 
-def _build_messages(rec: dict, setting: str) -> list:
+def _build_original_messages(rec: dict, setting: str) -> list:
     m      = rec["measurement"]
     if is_v2(m):
         if setting not in VALID_SETTINGS:
@@ -283,7 +283,8 @@ def _build_messages(rec: dict, setting: str) -> list:
             content.append(_image_content_block(rec['image_path']))
         if 'seg' in setting:
             content.append(_image_content_block(rec['seg_path']))
-        text = 'Write one professional inspection paragraph using only the supplied evidence. '
+        text = 'Write one professional inspection paragraph of six complete sentences using only the supplied evidence. '
+        text += 'Retain the detailed inspection narrative, numerical findings, abnormal interval positions, risk level, and conclusion when supplied. '
         text += 'Do not claim statutory acceptance or infer precise spacings from an image alone. '
         if 'measure' in setting:
             text += '\n'+format_measurement(m, include_rule='rule' in setting)
@@ -627,6 +628,37 @@ def _build_messages(rec: dict, setting: str) -> list:
 # Prompt hash (sha256 over JSON-serialised messages, skipping base64 payload)
 # ---------------------------------------------------------------------------
 
+def _build_messages(rec: dict, setting: str, report_style: str = "original") -> list:
+    messages = _build_original_messages(rec, setting)
+    if report_style == "concise":
+        messages[0]["content"] += (
+            " Output only the final inspection summary as one plain paragraph. "
+            "Aim for four short sentences, never more than six or 100 words. "
+            "When supplied, summarize count and mean spacing, maximum design deviation, "
+            "all failed zero-based interval indices, risk and final decision. "
+            "List failed indices compactly; do not repeat every spacing measurement. "
+            "Without measurements or design rules, state the missing evidence briefly "
+            "and do not invent numbers or a compliance decision. "
+            "Omit scene narration, reasoning, headings, Markdown and repeated disclaimers. "
+            "Retain any necessary uncertainty or screening-only qualification briefly. "
+            "Use complete sentences without ellipses."
+        )
+    elif report_style != "original":
+        raise ValueError("Unknown report style: " + report_style)
+    return messages
+
+
+def _validate_concise_report(text: str) -> None:
+    import re
+    sentences = re.findall(r"[.!?](?:\s+|$)", text.strip())
+    if "..." in text or "\u2026" in text:
+        raise ValueError("Concise report contains ellipses; generate complete sentences.")
+    if not 1 <= len(sentences) <= 6 or len(text.split()) > 100:
+        raise ValueError("Concise report must contain 1-6 complete sentences and at most 100 words.")
+    if not text.strip().endswith((".", "!", "?")):
+        raise ValueError("Concise report ends with an incomplete sentence.")
+
+
 def _prompt_hash(messages: list) -> str:
     def _strip_b64(obj):
         if isinstance(obj, dict):
@@ -707,6 +739,8 @@ def parse_args():
                    help="Input jsonl from build_report_inputs.py")
     p.add_argument("--setting", required=True, choices=VALID_SETTINGS,
                    help="Prompt setting")
+    p.add_argument("--report-style", choices=("original", "concise"), default="original",
+                   help="Use concise for a final summary of at most six sentences; original preserves experiment prompts")
     p.add_argument("--out_jsonl", required=True,
                    help="Output jsonl path")
     p.add_argument("--model", default="qwen-vl-plus",
@@ -740,6 +774,11 @@ def main():
     out_path   = Path(args.out_jsonl)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
+    if out_path.exists():
+        for line in out_path.read_text(encoding="utf-8").splitlines():
+            if line.strip() and json.loads(line).get("report_style", "original") != args.report_style:
+                raise SystemExit("Report style differs from existing output; use a new --out_jsonl path.")
+
     # Load all input records
     with open(input_path, encoding="utf-8") as f:
         records = [json.loads(l) for l in f if l.strip()]
@@ -766,7 +805,7 @@ def main():
             if args.limit is not None and n_generated >= args.limit:
                 break
 
-            messages = _build_messages(rec, args.setting)
+            messages = _build_messages(rec, args.setting, args.report_style)
             phash    = _prompt_hash(messages)
 
             out_rec = {
@@ -776,6 +815,7 @@ def main():
                 "setting":          args.setting,
                 "model":            args.model,
                 "prompt_hash":      phash,
+                "report_style":     args.report_style,
                 "reference_report": rec.get("reference_report", ""),
                 "measurement":      rec.get("measurement"),
                 "qaep":             rec.get("qaep"),
@@ -788,6 +828,9 @@ def main():
                     messages, args.model, args.base_url, api_key,
                     timeout=args.timeout,
                 )
+                if args.report_style == "concise":
+                    out_rec["raw_prediction"] = prediction
+                    _validate_concise_report(prediction)
                 out_rec["prediction"] = prediction
                 n_generated += 1
                 print(f"  [{n_generated}] {subset}/{sid}  OK")
